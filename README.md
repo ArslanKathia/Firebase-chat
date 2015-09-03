@@ -1,8 +1,10 @@
 # Firebase chat - Android - Material Design
 
-A simple chat application that built with Firebase on Android.
+This example was created for a CodeLab in the Google Developers Summit Mexico City 25 julio 2015 [GDS Mexico](https://events.withgoogle.com/gds-mexico-city-25-julio-2015/agenda/).
 
+I updated the example firebase android chat created by firebase using the concept of material design.
 
+ **Slides** [firebase Codelabs](https://speakerdeck.com/erikcaffrey/firebase) created by Erik González and Antonio Guzmán. 
 
 ## Setup
 
@@ -11,7 +13,7 @@ Update [`Config.java`](/app/src/main/java/gdg/androidtitlan/androidchatmateriald
 
 ## Features
 
- * **Material Design Theme **
+ * **Material Design Theme**
  * **RecyclerView**
  * **CardView**
  * **Toolbar**
@@ -21,7 +23,6 @@ Update [`Config.java`](/app/src/main/java/gdg/androidtitlan/androidchatmateriald
  [lean more](https://www.firebase.com/docs/web/guide/login/password.html).
  
 
-
 Firebase keeps the list data up to date based on a mapping to a model class.
 
 ## More about Firebase on Android
@@ -29,9 +30,12 @@ Firebase keeps the list data up to date based on a mapping to a model class.
 You can do lots more with Firebase on Android. Check out the Android
 [Quickstart guide](https://www.firebase.com/docs/java-quickstart.html) to learn more.
 
+A simple chat application that built with Firebase on Android.
 * **Android Chat created by Firebase** [Original Example](https://github.com/firebase/AndroidChat)
 
 ## Acknowledgment
  * **Antonio Guzmán Fernández / Google Developer Expert** Thank you for your awesome collaboration to create the talk content.
  * **Firebase Team** Thank you for your awesome platform Wonderful Good Job!
  
+## Demo
+   **very soon **
