@@ -39,3 +39,7 @@ A simple chat application that built with Firebase on Android.
  
 ## Demo
    **very soon **
+
+## Bonus
+
+If you want to integrate **firebase** with **twitter API** also use **Design library** you can found an full example [here](https://github.com/erikcaffrey/DesignLibraryFirebase). 
