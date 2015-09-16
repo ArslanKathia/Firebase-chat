@@ -38,7 +38,8 @@ A simple chat application that built with Firebase on Android.
  * **Firebase Team** Thank you for your awesome platform Wonderful Good Job!
  
 ## Demo
-   **very soon **
+   **you should enter an e-mail if not registered the application registers **
+![](https://aa1a5cf3c6e3569b77b29843c3f5b6ba8b369090.googledrive.com/host/0B9hNKr5AY4xXTXktOS11VlBaemM/Telecine_2015-09-15-23-08-06.gif)
 
 ## Bonus
 
