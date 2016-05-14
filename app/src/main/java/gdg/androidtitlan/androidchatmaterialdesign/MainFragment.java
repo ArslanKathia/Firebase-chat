@@ -1,3 +1,19 @@
+/**
+ * Copyright 2016 Erik Jhordan Rey.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package gdg.androidtitlan.androidchatmaterialdesign;
 
 import android.provider.Settings;
@@ -22,125 +38,103 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 import java.util.List;
 
+public class MainFragment extends Fragment implements View.OnClickListener {
 
-/**
- * created by Jhordan on 05/07/15.
- */
-public class MainFragment extends Fragment implements View.OnClickListener{
+  public MainFragment() {
+  }
 
-    public MainFragment() {
+  private Firebase mFirebaseReference;
+  private List<Chat> chatList;
+  private String idDevice;
+  private ChatAdapter chatAdapter;
+
+  @Override public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    Config.getFirebaseInitialize(getActivity());
+    mFirebaseReference = Config.getFirebaseReference();
+    chatList = new ArrayList<>();
+    idDevice =
+        Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+  }
+
+  EditText editTxtMessage;
+  RecyclerView recyclerViewChat;
+
+  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
+    View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+    initializeView(rootView);
+    return rootView;
+  }
+
+  private void setUpRecyclerView(RecyclerView recyclerView, ChatAdapter chatAdapter) {
+    recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+    recyclerView.setAdapter(chatAdapter);
+  }
+
+  private void initializeView(View rootView) {
+
+    Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+    ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+    final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+
+    if (actionBar != null) {
+      actionBar.setTitle(getString(R.string.app_name) + " - " + Config.getMail(getActivity()));
     }
 
-    private Firebase mFirebaseReference;
-    private List<Chat> chatList;
-    private String idDevice;
-    private ChatAdapter chatAdapter;
+    editTxtMessage = (EditText) rootView.findViewById(R.id.edit_txt_message);
+    recyclerViewChat = (RecyclerView) rootView.findViewById(R.id.recycler_view_chat);
+    ((FloatingActionButton) rootView.findViewById(R.id.button_sent)).setOnClickListener(this);
 
+    chatAdapter = new ChatAdapter(chatList, idDevice);
+    setUpRecyclerView(recyclerViewChat, chatAdapter);
+    getChatMessages();
+  }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  private void getChatMessages() {
 
-        Config.getFirebaseInitialize(getActivity());
-        mFirebaseReference = Config.getFirebaseReference();
-        chatList = new ArrayList<>();
-        idDevice = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+    mFirebaseReference.addChildEventListener(new ChildEventListener() {
+      @Override public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-    }
+        if (dataSnapshot != null && dataSnapshot.getValue() != null) {
 
+          //Firebase - Convierte una respuesta en un objeto de tipo Chat
+          Chat model = dataSnapshot.getValue(Chat.class);
+          chatList.add(model);
+          recyclerViewChat.scrollToPosition(chatList.size() - 1);
+          chatAdapter.notifyItemInserted(chatList.size() - 1);
+        }
+      }
 
-    EditText editTxtMessage;
-    RecyclerView recyclerViewChat;
+      @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+      }
 
-        initializeView(rootView);
-        return rootView;
+      @Override public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-    }
+      }
 
-    private void setUpRecyclerView(RecyclerView recyclerView, ChatAdapter chatAdapter){
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(chatAdapter);
-    }
+      @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-    private void initializeView(View rootView){
+      }
 
-        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+      @Override public void onCancelled(FirebaseError firebaseError) {
+        firebaseError.getMessage();
+      }
+    });
+  }
 
-        if (actionBar != null)
-            actionBar.setTitle(getString(R.string.app_name)+" - " + Config.getMail(getActivity()));
+  private void getMessageToSent() {
 
-        editTxtMessage = (EditText)rootView.findViewById(R.id.edit_txt_message);
-        recyclerViewChat = (RecyclerView) rootView.findViewById(R.id.recycler_view_chat);
-        ((FloatingActionButton)rootView.findViewById(R.id.button_sent)).setOnClickListener(this);
+    String message = editTxtMessage.getText().toString();
+    if (!message.isEmpty()) mFirebaseReference.push().setValue(new Chat(message, idDevice));
 
+    editTxtMessage.setText("");
+  }
 
-        chatAdapter = new ChatAdapter(chatList,idDevice);
-        setUpRecyclerView(recyclerViewChat, chatAdapter);
-        getChatMessages();
-
-
-
-
-
-    }
-
-    private void getChatMessages(){
-
-        mFirebaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                if (dataSnapshot != null && dataSnapshot.getValue() != null) {
-
-                    //Firebase - Convierte una respuesta en un objeto de tipo Chat
-                    Chat model = dataSnapshot.getValue(Chat.class);
-                    chatList.add(model);
-                    recyclerViewChat.scrollToPosition(chatList.size() - 1);
-                    chatAdapter.notifyItemInserted(chatList.size() - 1);
-                }
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                firebaseError.getMessage();
-            }
-        });
-    }
-
-    private void getMessageToSent(){
-
-        String message = editTxtMessage.getText().toString();
-        if(!message.isEmpty())
-            mFirebaseReference.push().setValue(new Chat(message,idDevice));
-
-        editTxtMessage.setText("");
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        getMessageToSent();
-    }
+  @Override public void onClick(View view) {
+    getMessageToSent();
+  }
 }
