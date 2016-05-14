@@ -36,7 +36,7 @@ public class Config {
         return FIREBASE_MAIL;
     }
 
-    public static void getFirebaseInitialize(Context context) {
+    public static void initializeFirebase(Context context) {
         Firebase.setAndroidContext(context);
     }
 

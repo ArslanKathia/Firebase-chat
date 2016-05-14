@@ -54,7 +54,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    Config.getFirebaseInitialize(getActivity());
+    Config.initializeFirebase(getActivity());
     firebase = Config.getFirebaseReference();
     chatList = new ArrayList<>();
     idDevice =

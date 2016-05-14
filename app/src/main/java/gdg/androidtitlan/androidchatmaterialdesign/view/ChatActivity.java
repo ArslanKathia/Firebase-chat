@@ -16,18 +16,24 @@
 
 package gdg.androidtitlan.androidchatmaterialdesign.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import gdg.androidtitlan.androidchatmaterialdesign.R;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  private final static String USER_NAME_EXTRA = "user_name_extra";
 
-    }
+  @Override protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+  }
 
-
+  public static Intent provideIntent(Context context, String userName) {
+    Intent intent = new Intent(context, ChatActivity.class);
+    intent.putExtra(USER_NAME_EXTRA, userName);
+    return intent;
+  }
 }

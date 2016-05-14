@@ -26,17 +26,16 @@
 
 
     <EditText
-        android:id="@+id/edit_txt_mail"
+        android:id="@+id/label_mail"
         android:layout_marginBottom="@dimen/padding_login_middle"
         android:hint="@string/hint_mail"
         style="@style/Widget.EditText.Custom"/>
 
     <EditText
-        android:id="@+id/edit_txt_pass"
+        android:id="@+id/label_password"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
         style="@style/Widget.EditText.Custom"/>
-
 
   </LinearLayout>
 

@@ -3,7 +3,7 @@
 
     <string name="hint_mail">Mail</string>
     <string name="hint_password">Password</string>
-    <string name="login_progress_dialog">Iniciando sesión...</string>
+    <string name="login_progress_dialog">One moment please…</string>
     <string name="welcome">Bienvenido! </string>
     <string name="hello">Hola</string>
     <string name="sent_message">Enviar un mensaje</string>
