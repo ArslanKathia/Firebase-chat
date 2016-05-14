@@ -8,11 +8,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme.FirebaseChat">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name">
 
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

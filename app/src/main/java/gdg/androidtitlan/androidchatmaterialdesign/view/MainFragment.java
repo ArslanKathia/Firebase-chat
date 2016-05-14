@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.androidchatmaterialdesign.view;
 
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -35,6 +35,9 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import gdg.androidtitlan.androidchatmaterialdesign.Config;
+import gdg.androidtitlan.androidchatmaterialdesign.R;
+import gdg.androidtitlan.androidchatmaterialdesign.model.Chat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +46,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
   public MainFragment() {
   }
 
-  private Firebase mFirebaseReference;
+  private Firebase firebase;
   private List<Chat> chatList;
   private String idDevice;
   private ChatAdapter chatAdapter;
@@ -52,7 +55,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     super.onCreate(savedInstanceState);
 
     Config.getFirebaseInitialize(getActivity());
-    mFirebaseReference = Config.getFirebaseReference();
+    firebase = Config.getFirebaseReference();
     chatList = new ArrayList<>();
     idDevice =
         Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -95,12 +98,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
   private void getChatMessages() {
 
-    mFirebaseReference.addChildEventListener(new ChildEventListener() {
+    firebase.addChildEventListener(new ChildEventListener() {
       @Override public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
         if (dataSnapshot != null && dataSnapshot.getValue() != null) {
-
-          //Firebase - Convierte una respuesta en un objeto de tipo Chat
           Chat model = dataSnapshot.getValue(Chat.class);
           chatList.add(model);
           recyclerViewChat.scrollToPosition(chatList.size() - 1);
@@ -129,7 +130,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
   private void getMessageToSent() {
 
     String message = editTxtMessage.getText().toString();
-    if (!message.isEmpty()) mFirebaseReference.push().setValue(new Chat(message, idDevice));
+    if (!message.isEmpty()) firebase.push().setValue(new Chat(message, idDevice));
 
     editTxtMessage.setText("");
   }

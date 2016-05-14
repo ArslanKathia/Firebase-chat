@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.androidchatmaterialdesign.view;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import gdg.androidtitlan.androidchatmaterialdesign.R;
+import gdg.androidtitlan.androidchatmaterialdesign.model.Chat;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
@@ -53,7 +55,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Chat chat = chatList.get(position);
         holder.txtMessage.setText(chat.getMessage());
-
     }
 
 

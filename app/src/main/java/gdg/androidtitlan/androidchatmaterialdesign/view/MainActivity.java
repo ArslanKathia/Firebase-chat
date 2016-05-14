@@ -14,31 +14,20 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.androidchatmaterialdesign.view;
 
-public class Chat {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import gdg.androidtitlan.androidchatmaterialdesign.R;
 
-    private String message;
-    private String author;
+public class MainActivity extends AppCompatActivity {
 
-    // Default constructor is required for Firebase object mapping
-    @SuppressWarnings("unuser")
-    public Chat(){}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    public Chat(String message, String author) {
-        this.message = message;
-        this.author = author;
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-
 
 
 }

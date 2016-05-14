@@ -7,48 +7,49 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_login">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/image_height"
-        android:scaleType="fitCenter"
-        android:src="@drawable/firebase" />
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/image_height"
+      android:contentDescription="@string/app_name"
+      android:scaleType="fitCenter"
+      android:src="@drawable/fb_logo"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padding_login"
-        android:layout_marginRight="@dimen/padding_login"
-        android:layout_marginTop="@dimen/top_image"
-        android:orientation="vertical"
-        android:padding="@dimen/edit_text_padding">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/padding_login"
+      android:layout_marginRight="@dimen/padding_login"
+      android:layout_marginTop="@dimen/top_image"
+      android:orientation="vertical"
+      android:padding="@dimen/edit_text_padding">
 
 
-        <EditText
-            android:id="@+id/edit_txt_mail"
-            style="@style/Widget.EditText.Custom"
-            android:layout_marginBottom="@dimen/padding_login_middle"
-            android:hint="@string/hint_mail" />
+    <EditText
+        android:id="@+id/edit_txt_mail"
+        android:layout_marginBottom="@dimen/padding_login_middle"
+        android:hint="@string/hint_mail"
+        style="@style/Widget.EditText.Custom"/>
 
-        <EditText
-            android:id="@+id/edit_txt_pass"
-            style="@style/Widget.EditText.Custom"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword" />
-
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/edit_txt_pass"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        style="@style/Widget.EditText.Custom"/>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/top_image"
-        android:src="@drawable/entrar"
-        app:borderWidth="0dp"
-        app:pressedTranslationZ="8dp" />
+  </LinearLayout>
+
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/button_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="@dimen/top_image"
+      android:src="@drawable/arrow"
+      app:borderWidth="0dp"
+      app:pressedTranslationZ="8dp"/>
 
 
 </LinearLayout>

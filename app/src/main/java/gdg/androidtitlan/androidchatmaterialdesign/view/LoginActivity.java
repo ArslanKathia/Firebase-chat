@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.androidchatmaterialdesign.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,12 +28,14 @@ import android.widget.Toast;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import gdg.androidtitlan.androidchatmaterialdesign.Config;
+import gdg.androidtitlan.androidchatmaterialdesign.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
 
 
-    private Firebase mFirebaseReference;
+    private Firebase firebase;
     private String mUsername;
     TextView  txtEmail, txtPassword;
 
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         Config.getFirebaseInitialize(this);
-        mFirebaseReference = Config.getFirebaseReference();
+        firebase = Config.getFirebaseReference();
         initializeView();
 
     }
@@ -54,9 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         getAuthStateListener();
     }
 
-    /**
-     * Inicializamos nuestras vistas
-     */
+
 
     private void initializeView(){
 
@@ -66,13 +66,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    /**
-     * Agregamos una listener a nuestra referencia para saber si estamos Autentificados
-     */
 
     private void getAuthStateListener(){
 
-        mFirebaseReference.addAuthStateListener(new Firebase.AuthStateListener() {
+        firebase.addAuthStateListener(new Firebase.AuthStateListener() {
             @Override
             public void onAuthStateChanged(AuthData authData) {
                 if (authData != null) {
@@ -91,37 +88,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    /**
-     * @param email correo del usuario
-     * @param password contraseña del usuario
-     *
-     * Este metodo hace login con firebase si el usuario no existe lo crea
-     *
-     */
 
     private void firebaseLogin (final String email, final String password){
 
         final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, null,getString(R.string.login_progress_dialog), true);
-        mFirebaseReference.createUser(email, password, new Firebase.ResultHandler() {
+        firebase.createUser(email, password, new Firebase.ResultHandler() {
             @Override
             public void onSuccess() {
-                mFirebaseReference.authWithPassword(email, password, null);
+                firebase.authWithPassword(email, password, null);
                 progressDialog.dismiss();
             }
             @Override
             public void onError(FirebaseError firebaseError) {
-                mFirebaseReference.authWithPassword(email, password, null);
+                firebase.authWithPassword(email, password, null);
                 progressDialog.dismiss();
             }
         });
 
     }
 
-
-    /**
-     *
-     * @param view listener para el FloatingActionButton
-     */
 
     @Override
     public void onClick(View view) {
