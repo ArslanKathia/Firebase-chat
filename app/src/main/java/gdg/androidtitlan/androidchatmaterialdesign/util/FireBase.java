@@ -1,4 +1,4 @@
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.androidchatmaterialdesign.util;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

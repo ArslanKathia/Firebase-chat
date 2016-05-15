@@ -27,7 +27,7 @@ import butterknife.OnClick;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import gdg.androidtitlan.androidchatmaterialdesign.FireBase;
+import gdg.androidtitlan.androidchatmaterialdesign.util.FireBase;
 import gdg.androidtitlan.androidchatmaterialdesign.R;
 import gdg.androidtitlan.androidchatmaterialdesign.chat.ChatActivity;
 
@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     initializePresenter();
   }
 
-
   @OnClick(R.id.button_login) void login() {
     UserCredential userCredential = getUserCredential();
     presenter.login(userCredential);
@@ -59,7 +58,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     super.onResume();
     presenter.authStateListener();
   }
-
 
   @Override public void showProgress(boolean state) {
     setProgressState(state);
@@ -91,13 +89,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     });
   }
 
-  @Override public void launchChatActivity(String userName) {
-    Intent intent = ChatActivity.provideIntent(this, userName);
+  @Override public void launchChatActivity(String mail) {
+    Intent intent = ChatActivity.provideIntent(this, mail);
     startActivity(intent);
+    finish();
   }
 
   private void setProgressState(Boolean state) {
-    ProgressDialog.show(this, null, getString(R.string.login_progress_dialog), state);
+    ProgressDialog progress =
+        ProgressDialog.show(this, null, getString(R.string.login_progress_dialog), true);
+    if (!state) progress.dismiss();
   }
 
   private UserCredential getUserCredential() {

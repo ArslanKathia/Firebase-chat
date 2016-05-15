@@ -19,21 +19,42 @@ package gdg.androidtitlan.androidchatmaterialdesign.chat;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import gdg.androidtitlan.androidchatmaterialdesign.R;
 
 public class ChatActivity extends AppCompatActivity {
 
-  private final static String USER_NAME_EXTRA = "user_name_extra";
+  private final static String USER_MAIL_EXTRA = "user_mail_extra";
+
+  @BindView(R.id.toolbar) Toolbar toolbar;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    ButterKnife.bind(this);
+    setSupportActionBar(toolbar);
+    setupToolbar();
+  }
+
+  private void setupToolbar() {
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setDisplayShowTitleEnabled(true);
+      actionBar.setTitle(getString(R.string.app_name) + " - " + getMail());
+    }
+  }
+
+  private String getMail() {
+    return getIntent().getStringExtra(USER_MAIL_EXTRA);
   }
 
   public static Intent provideIntent(Context context, String userName) {
     Intent intent = new Intent(context, ChatActivity.class);
-    intent.putExtra(USER_NAME_EXTRA, userName);
+    intent.putExtra(USER_MAIL_EXTRA, userName);
     return intent;
   }
 }

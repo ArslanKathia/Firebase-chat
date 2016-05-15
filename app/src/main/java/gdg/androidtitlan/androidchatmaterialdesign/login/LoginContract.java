@@ -31,7 +31,7 @@ public interface LoginContract {
 
     void fireBaseAuthStateListener();
 
-    void launchChatActivity(String userName);
+    void launchChatActivity(String mail);
   }
 
   interface UserActionListener {
