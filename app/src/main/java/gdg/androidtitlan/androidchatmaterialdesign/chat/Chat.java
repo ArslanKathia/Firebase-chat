@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.model;
+package gdg.androidtitlan.androidchatmaterialdesign.chat;
 
 public class Chat {
 

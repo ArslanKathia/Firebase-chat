@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.view;
+package gdg.androidtitlan.androidchatmaterialdesign.chat;
 
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -37,14 +37,10 @@ import com.firebase.client.FirebaseError;
 
 import gdg.androidtitlan.androidchatmaterialdesign.Config;
 import gdg.androidtitlan.androidchatmaterialdesign.R;
-import gdg.androidtitlan.androidchatmaterialdesign.model.Chat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
-
-  public MainFragment() {
-  }
 
   private Firebase firebase;
   private List<Chat> chatList;
@@ -57,8 +53,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     Config.initializeFirebase(getActivity());
     firebase = Config.getFirebaseReference();
     chatList = new ArrayList<>();
-    idDevice =
-        Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+    idDevice = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
   }
 
   EditText editTxtMessage;
@@ -87,7 +82,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
       actionBar.setTitle(getString(R.string.app_name) + " - " + Config.getMail(getActivity()));
     }
 
-    editTxtMessage = (EditText) rootView.findViewById(R.id.edit_txt_message);
+    editTxtMessage = (EditText) rootView.findViewById(R.id.label_message);
     recyclerViewChat = (RecyclerView) rootView.findViewById(R.id.recycler_view_chat);
     ((FloatingActionButton) rootView.findViewById(R.id.button_sent)).setOnClickListener(this);
 

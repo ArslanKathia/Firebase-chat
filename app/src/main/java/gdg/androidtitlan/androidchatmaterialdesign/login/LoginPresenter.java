@@ -31,21 +31,21 @@ public class LoginPresenter implements LoginContract.UserActionListener {
 
   @Override public void login(UserCredential credential) {
     view.showProgress(true);
-    view.firebaseCreateUser(credential);
+    view.fireBaseCreateUser(credential);
   }
 
   @Override public void auth(UserCredential credential) {
-    view.firebaseAuthWithPassword(credential);
+    view.fireBaseAuthWithPassword(credential);
     view.showProgress(false);
   }
 
   @Override public void authError(UserCredential credential, FirebaseError firebaseError) {
-    view.firebaseAuthWithPassword(credential);
+    view.fireBaseAuthWithPassword(credential);
     view.showProgress(false);
   }
 
   @Override public void authStateListener() {
-    view.firebaseAuthStateListener();
+    view.fireBaseAuthStateListener();
   }
 
   @Override public void authStateChanged(AuthData authData) {

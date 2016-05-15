@@ -1,6 +1,19 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:name="gdg.androidtitlan.androidchatmaterialdesign.view.MainFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout="@layout/fragment_main" />
+    android:orientation="vertical">
+
+
+  <include layout="@layout/toolbar"/>
+
+  <fragment
+      android:id="@+id/fragment"
+      android:name="gdg.androidtitlan.androidchatmaterialdesign.chat.MainFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:layout="@layout/fragment_main"/>
+
+</LinearLayout>
+
+

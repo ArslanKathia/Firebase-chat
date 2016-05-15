@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.view;
+package gdg.androidtitlan.androidchatmaterialdesign.chat;
 
 import android.content.Context;
 import android.content.Intent;

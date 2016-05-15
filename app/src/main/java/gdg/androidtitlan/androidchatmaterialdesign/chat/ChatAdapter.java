@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.view;
+package gdg.androidtitlan.androidchatmaterialdesign.chat;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import gdg.androidtitlan.androidchatmaterialdesign.R;
-import gdg.androidtitlan.androidchatmaterialdesign.model.Chat;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {

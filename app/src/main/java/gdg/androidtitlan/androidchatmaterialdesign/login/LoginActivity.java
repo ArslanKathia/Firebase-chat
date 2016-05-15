@@ -29,7 +29,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import gdg.androidtitlan.androidchatmaterialdesign.FireBase;
 import gdg.androidtitlan.androidchatmaterialdesign.R;
-import gdg.androidtitlan.androidchatmaterialdesign.view.ChatActivity;
+import gdg.androidtitlan.androidchatmaterialdesign.chat.ChatActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     setProgressState(state);
   }
 
-  @Override public void firebaseCreateUser(final UserCredential credential) {
+  @Override public void fireBaseCreateUser(final UserCredential credential) {
     firebase.createUser(credential.getMail(), credential.getPassword(),
         new Firebase.ResultHandler() {
 
@@ -79,11 +79,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         });
   }
 
-  @Override public void firebaseAuthWithPassword(UserCredential credential) {
+  @Override public void fireBaseAuthWithPassword(UserCredential credential) {
     firebase.authWithPassword(credential.getMail(), credential.getPassword(), null);
   }
 
-  @Override public void firebaseAuthStateListener() {
+  @Override public void fireBaseAuthStateListener() {
     firebase.addAuthStateListener(new Firebase.AuthStateListener() {
       @Override public void onAuthStateChanged(AuthData authData) {
         if (authData != null) presenter.authStateChanged(authData);

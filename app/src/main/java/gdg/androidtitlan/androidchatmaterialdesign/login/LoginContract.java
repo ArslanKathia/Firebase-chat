@@ -25,11 +25,11 @@ public interface LoginContract {
 
     void showProgress(boolean state);
 
-    void firebaseCreateUser(UserCredential credential);
+    void fireBaseCreateUser(UserCredential credential);
 
-    void firebaseAuthWithPassword(UserCredential credential);
+    void fireBaseAuthWithPassword(UserCredential credential);
 
-    void firebaseAuthStateListener();
+    void fireBaseAuthStateListener();
 
     void launchChatActivity(String userName);
   }
