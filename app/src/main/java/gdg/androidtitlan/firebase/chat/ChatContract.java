@@ -7,7 +7,7 @@ import com.firebase.client.DataSnapshot;
  */
 public class ChatContract {
 
-  interface View {
+  public interface View {
 
     void sendMessage();
 
