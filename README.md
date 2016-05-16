@@ -8,7 +8,7 @@ I updated the example firebase android chat created by firebase using the concep
 
 ## Setup
 
-Update [`Config.java`](/app/src/main/java/gdg/androidtitlan/androidchatmaterialdesign/Config.java) and replace
+Update [`FireBase.java`](/app/src/main/java/gdg/androidtitlan/firebase/FireBase.java) and replace
 `https://android-chat-gds.firebaseio.com/` with a reference to your Firebase.
 
 ## Features
