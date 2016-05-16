@@ -6,12 +6,12 @@ I updated the example firebase android chat created by firebase using the concep
 
  **Slides** [firebase Codelabs](https://speakerdeck.com/erikcaffrey/firebase) created by Erik González and Antonio Guzmán. 
 
-## Libraries used on the sample project
+## 
 
 Update [`FireBase.java`](/app/src/main/java/gdg/androidtitlan/firebase/FireBase.java) and replace
 `https://android-chat-gds.firebaseio.com/` with a reference to your Firebase.
 
-## Features
+## Libraries used on the sample project
 
  * **Material Design Theme**
  * **RecyclerView**
