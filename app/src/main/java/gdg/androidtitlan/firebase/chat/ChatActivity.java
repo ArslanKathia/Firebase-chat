@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.chat;
+package gdg.androidtitlan.firebase.chat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import gdg.androidtitlan.androidchatmaterialdesign.R;
+import gdg.androidtitlan.firebase.R;
 
 public class ChatActivity extends AppCompatActivity {
 

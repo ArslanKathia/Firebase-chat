@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.login;
+package gdg.androidtitlan.firebase.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,15 +27,16 @@ import butterknife.OnClick;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import gdg.androidtitlan.androidchatmaterialdesign.util.FireBase;
-import gdg.androidtitlan.androidchatmaterialdesign.R;
-import gdg.androidtitlan.androidchatmaterialdesign.chat.ChatActivity;
+import gdg.androidtitlan.firebase.FireBase;
+import gdg.androidtitlan.firebase.R;
+import gdg.androidtitlan.firebase.chat.ChatActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
   @BindView(R.id.label_mail) EditText mailLabel;
   @BindView(R.id.label_password) EditText passwordLabel;
 
+  private ProgressDialog progress;
   private Firebase firebase;
 
   private LoginContract.UserActionListener presenter;
@@ -96,9 +97,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
   }
 
   private void setProgressState(Boolean state) {
-    ProgressDialog progress =
-        ProgressDialog.show(this, null, getString(R.string.login_progress_dialog), true);
-    if (!state) progress.dismiss();
+
+    if (state) {
+      setProgress(true);
+    } else {
+      progress.dismiss();
+    }
   }
 
   private UserCredential getUserCredential() {
@@ -115,5 +119,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     if (presenter == null) {
       presenter = new LoginPresenter(this);
     }
+  }
+
+  private void setProgress(Boolean state) {
+    progress = ProgressDialog.show(this, null, getString(R.string.login_progress_dialog), state);
   }
 }

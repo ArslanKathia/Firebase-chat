@@ -14,23 +14,31 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.login;
+package gdg.androidtitlan.firebase.chat;
 
-public class UserCredential {
+public class Chat {
 
-  private String mail;
-  private String password;
+    private String message;
+    private String author;
 
-  public UserCredential(String mail, String password) {
-    this.mail = mail;
-    this.password = password;
-  }
+    // Default constructor is required for Firebase object mapping
+    @SuppressWarnings("unuser")
+    public Chat(){}
 
-  public String getMail() {
-    return mail;
-  }
+    public Chat(String message, String author) {
+        this.message = message;
+        this.author = author;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public String getMessage() {
+        return message;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+
+
+
 }

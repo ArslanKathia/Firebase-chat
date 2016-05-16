@@ -1,4 +1,4 @@
-package gdg.androidtitlan.androidchatmaterialdesign;
+package gdg.androidtitlan.firebase;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

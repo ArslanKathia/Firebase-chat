@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.login;
+package gdg.androidtitlan.firebase.login;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.FirebaseError;

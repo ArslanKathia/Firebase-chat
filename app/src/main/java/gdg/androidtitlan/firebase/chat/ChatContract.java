@@ -1,4 +1,4 @@
-package gdg.androidtitlan.androidchatmaterialdesign.chat;
+package gdg.androidtitlan.firebase.chat;
 
 import com.firebase.client.DataSnapshot;
 
@@ -8,12 +8,14 @@ import com.firebase.client.DataSnapshot;
 public class ChatContract {
 
   interface View {
+
     void sendMessage();
 
     void fireBaseOnChildAdded(DataSnapshot dataSnapshot, String s);
   }
 
   interface UserActionListener {
+
     void send();
 
     void childAdded(DataSnapshot dataSnapshot, String s);

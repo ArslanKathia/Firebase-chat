@@ -1,4 +1,4 @@
-package gdg.androidtitlan.androidchatmaterialdesign.chat;
+package gdg.androidtitlan.firebase.chat;
 
 import android.support.annotation.NonNull;
 import com.firebase.client.DataSnapshot;

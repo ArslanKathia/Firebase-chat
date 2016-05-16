@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gdg.androidtitlan.androidchatmaterialdesign.chat;
+package gdg.androidtitlan.firebase.chat;
 
 import android.os.Bundle;
 import android.provider.Settings;
@@ -32,8 +32,8 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import gdg.androidtitlan.androidchatmaterialdesign.util.FireBase;
-import gdg.androidtitlan.androidchatmaterialdesign.R;
+import gdg.androidtitlan.firebase.FireBase;
+import gdg.androidtitlan.firebase.R;
 import java.util.ArrayList;
 import java.util.List;
 
