@@ -6,7 +6,7 @@ I updated the example firebase android chat created by firebase using the concep
 
  **Slides** [firebase Codelabs](https://speakerdeck.com/erikcaffrey/firebase) created by Erik González and Antonio Guzmán. 
 
-## Setup
+## Libraries used on the sample project
 
 Update [`FireBase.java`](/app/src/main/java/gdg/androidtitlan/firebase/FireBase.java) and replace
 `https://android-chat-gds.firebaseio.com/` with a reference to your Firebase.
@@ -21,6 +21,8 @@ Update [`FireBase.java`](/app/src/main/java/gdg/androidtitlan/firebase/FireBase.
  * **Firebase SDK**
  * **Email & Password Authentication** Firebase makes it easy to integrate email and password authentication into your app
  [lean more](https://www.firebase.com/docs/web/guide/login/password.html).
+ * **JUnit**
+ * **Mockito**
  
 
 Firebase keeps the list data up to date based on a mapping to a model class.
