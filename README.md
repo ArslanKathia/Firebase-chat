@@ -3,8 +3,11 @@
 This example was created for a CodeLab in the Google Developers Summit Mexico City 25 julio 2015 [GDS Mexico](https://events.withgoogle.com/gds-mexico-city-25-julio-2015/agenda/).
 
 I updated the example firebase android chat created by firebase using the concept of material design.
+**Slides** [firebase Codelabs](https://speakerdeck.com/erikcaffrey/firebase) created by Erik González and Antonio Guzmán. 
+ 
+This example was also used to support my talk "Essentials Firebase on Android" Mexico City, May 2016.
+**Slides** [Firebase Essentials For Android](https://speakerdeck.com/erikcaffrey/firebase-essentials-for-android) created by Erik González. 
 
- **Slides** [firebase Codelabs](https://speakerdeck.com/erikcaffrey/firebase) created by Erik González and Antonio Guzmán. 
 
 ## Setup
 
@@ -46,3 +49,14 @@ A simple chat application that built with Firebase on Android.
 ## Bonus
 
 If you want to integrate **firebase** with **twitter API** also use **Design library** you can found a full example [here](https://github.com/erikcaffrey/DesignLibraryFirebase). 
+
+
+Do you want to contribute?
+--------------------------
+
+Feel free to report or add any useful feature, I will be glad to improve it with your help, before submitting your code please check the [codestyle](https://github.com/square/java-code-styles).
+
+Developed By
+------------
+
+* Erik González  - <erikcaffrey10@gmail.com>
